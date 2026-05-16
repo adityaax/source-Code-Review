@@ -1,4 +1,4 @@
-```
+```python
 from flask import Flask, request, session, jsonify
 import sqlite3
 
@@ -83,6 +83,8 @@ if __name__ == "__main__":
 
 <details>
 <summary><b>Reveal Solution</b></summary>
+
+## Findings
 
 1. SQL Injection in /login
 The login query directly inserts user input into the SQL statement using string interpolation. An attacker can inject SQL payloads (such as ' OR '1'='1) to bypass authentication and log in without valid credentials.
