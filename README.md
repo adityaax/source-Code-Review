@@ -128,12 +128,7 @@ def profile():
 
 ## Finding
 
-**Insecure Direct Object Reference (IDOR)**
-
----
-
-## Why It Exists
-
+**Insecure Direct Object Reference (IDOR)**\
 The application checks whether the user is authenticated:
 
 ```python
