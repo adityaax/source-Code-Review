@@ -1,3 +1,5 @@
+## Vulnerable Code
+
 ```python
 from flask import Flask, request, session, jsonify
 import sqlite3
@@ -86,22 +88,22 @@ if __name__ == "__main__":
 
 ## Findings
 
-1. SQL Injection in /login
+**1. SQL Injection in login**\
 The login query directly inserts user input into the SQL statement using string interpolation. An attacker can inject SQL payloads (such as ' OR '1'='1) to bypass authentication and log in without valid credentials.
 
-2. Insecure Secret Key Disclosure
+**2. Insecure Secret Key Disclosure**\
 The Flask secret key is hardcoded as dev-secret-key. If an attacker knows this value, they may forge signed session cookies and manipulate session data, potentially assigning themselves elevated privileges like admin access.
 
-3. IDOR in /profile
+**3. IDOR in /profile**\
 The profile endpoint accepts a user-controlled id parameter without validating ownership. Any authenticated user can access another user’s profile by changing the ID value. Example: /profile?id=2
 
-4. Unauthorized Email Modification
+**4. Unauthorized Email Modification**\
 The /update-email endpoint trusts the user_id supplied in the request instead of using the authenticated session user. An attacker can modify another user's email by submitting a different user_id, resulting in broken access control.
 
-5. Privilege Escalation in /admin/delete-user
+**5. Privilege Escalation in /admin/delete-user**\
 Admin access is granted if the request contains: X-Admin: true
 
-6. Debug Mode Enabled
+**6. Debug Mode Enabled**\
 The application runs with: app.run(debug=True)
 
 </details>
