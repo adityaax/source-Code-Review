@@ -92,6 +92,8 @@ Every file includes:
 
 ---
 
+**Note: Found an error or inconsistency in any solution? Feel free to open an issue.**
+
 ## Example
 
 ```python
